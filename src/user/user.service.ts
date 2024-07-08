@@ -81,7 +81,7 @@ export class UserService {
         }
     }
 
-    async user_dashboard(id){
+    async user_dashboard(id) {
         try {
             const Alluser = await this.taskModel.find({ where: { userid: id } });
             const monthlyCounts = Alluser.reduce((acc, user) => {

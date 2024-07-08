@@ -12,12 +12,12 @@ import { Task } from '../entity/Task.entity';
     imports: [
         TypeOrmModule.forFeature([User, Task]),
         JwtModule.register({
-            secret: 'CODE'
+            secret: process.env.JWT_SECRET
         }),
         PassportModule.register({ defaultStrategy: 'jwt' }),
     ],
     controllers: [AdminController],
     providers: [AdminService, JwtStrategy],
-    exports: [AdminService], // Export if other modules need to use AdminService
+    exports: [AdminService],
 })
 export class AdminModule { }

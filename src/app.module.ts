@@ -5,18 +5,20 @@ import { AppService } from './app.service';
 import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
-import { dataSourceOptions } from '../db/data-source'
+import { ConfigModule } from '@nestjs/config';
+import { dataSourceOptions } from '../db/data-source';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(
-      dataSourceOptions
-    ),
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      isGlobal: true,
+    }),
+    TypeOrmModule.forRoot(dataSourceOptions),
     AdminModule,
     UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

@@ -3,14 +3,14 @@ require('dotenv').config();
 
 export const dataSourceOptions: DataSourceOptions = {
     type: 'mysql',
-    host: 'localhost',
+    host: process.env.DB_HOST,
     port: 3306,
-    username: 'root',
-    password: '',
-    database: 'Demo',
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     entities: ['dist/**/*.entity.js'],
     migrations: ['dist/db/migrations/*.js'],
-    
+
 };
 
 

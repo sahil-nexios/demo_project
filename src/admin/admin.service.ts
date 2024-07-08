@@ -13,7 +13,7 @@ export class AdminService {
     constructor(
         @InjectRepository(User)
         private readonly userModel: Repository<User>,
-        
+
         @InjectRepository(Task)
         private readonly taskModel: Repository<Task>,
 

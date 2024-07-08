@@ -29,8 +29,7 @@ export class UserController {
     @Get('All_Task')
     @UseGuards(AuthGuard('jwt'), RolesGuard)
     @Roles('user')
-    @UseInterceptors(FileInterceptor('image', taskImageupload))
-    async All_Task(@Body() dto, @Req() req: CustomRequest, @Res() res: Response, @UploadedFile() file) {
+    async All_Task(@Body() dto, @Req() req: CustomRequest, @Res() res: Response) {
         const id = req.user.id;
         const result = await this.UserService.All_Task(id);
         return res.status(HttpStatus.OK).json(result);
