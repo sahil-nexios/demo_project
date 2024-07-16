@@ -4,11 +4,13 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { AdminService } from './admin/admin.service';
 import { SetMetadata } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
+require('dotenv').config();
+
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor(private readonly AdminService: AdminService) {
-        super({
+        super({ 
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
             secretOrKey: process.env.JWT_SECRET,
         });
